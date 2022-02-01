@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
-import { lastValueFrom, Observable } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class AppService {
@@ -13,10 +13,6 @@ export class AppService {
   }
 
   async getHello(): Promise<any> {
-    return lastValueFrom(this.getHero());
-  }
-
-  getHero(): Observable<any> {
-    return this.heroesService.findOne({ id: 1 });
+    return lastValueFrom(this.heroesService.findOne({ id: 1 }));
   }
 }
