@@ -20,6 +20,7 @@ import { AppService } from './app.service';
              */
             (options, nextCall) => {
               console.log('CALLED INTERCEPTOR');
+              throw new Error(`This won't be thrown.`);
               return new InterceptingCall(nextCall(options));
             },
           ],
